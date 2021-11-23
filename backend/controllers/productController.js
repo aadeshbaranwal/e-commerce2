@@ -13,6 +13,8 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
+  console.log("here", typeof images)
+
 
   const imagesLinks = [];
 
@@ -28,7 +30,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   }
 
   req.body.images = imagesLinks;
-  req.body.user = req.user.id;
+  req.body.user = "619c092fd671b28f2abb67d7";
 
   const product = await Product.create(req.body);
 

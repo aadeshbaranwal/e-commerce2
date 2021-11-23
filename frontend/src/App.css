@@ -4,7 +4,8 @@
 }
 
 body {
-  cursor: url("./images/cursor.png"), auto;
+  cursor: auto;
+  /* background-color: black; */
 }
 
 /* Chrome, Safari, Edge, Opera */

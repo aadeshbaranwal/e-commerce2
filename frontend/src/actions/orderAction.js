@@ -21,6 +21,9 @@ import {
 } from "../constants/orderConstants";
 
 import axios from "axios";
+import { token } from "../constants/constantsCustom";
+axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.headers.common['Authorization'] = token;
 
 // Create Order
 export const createOrder = (order) => async (dispatch) => {

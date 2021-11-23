@@ -72,11 +72,7 @@ const Dashboard = () => {
         <Typography component="h1">Dashboard</Typography>
 
         <div className="dashboardSummary">
-          <div>
-            <p>
-              Total Amount <br /> ₹{totalAmount}
-            </p>
-          </div>
+          
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
               <p>Product</p>
@@ -97,9 +93,6 @@ const Dashboard = () => {
           <Line data={lineState} />
         </div>
 
-        <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
-        </div>
       </div>
     </div>
   );

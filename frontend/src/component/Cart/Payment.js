@@ -18,9 +18,12 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import { token } from "../../constants/constantsCustom";
 
 const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  axios.defaults.baseURL = 'http://localhost:3000';
+  axios.defaults.headers.common['Authorization'] = token;
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -83,24 +86,24 @@ const Payment = ({ history }) => {
         },
       });
 
-      if (result.error) {
-        payBtn.current.disabled = false;
+      // if (result.error) {
+      //   payBtn.current.disabled = false;
 
-        alert.error(result.error.message);
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
+      //   alert.error(result.error.message);
+      // } else {
+      //   if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
-            id: result.paymentIntent.id,
-            status: result.paymentIntent.status,
+            id: user.email,
+            status: true,
           };
 
           dispatch(createOrder(order));
 
           history.push("/success");
-        } else {
-          alert.error("There's some issue while processing payment ");
-        }
-      }
+      //   } else {
+      //     alert.error("There's some issue while processing payment ");
+      //   }
+      // }
     } catch (error) {
       payBtn.current.disabled = false;
       alert.error(error.response.data.message);

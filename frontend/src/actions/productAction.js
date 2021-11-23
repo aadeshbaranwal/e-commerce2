@@ -1,4 +1,5 @@
 import axios from "axios";
+import { token } from "../constants/constantsCustom";
 
 import {
   ALL_PRODUCT_FAIL,
@@ -30,6 +31,9 @@ import {
   DELETE_REVIEW_FAIL,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
+
+axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.headers.common['Authorization'] = token;
 
 // Get All Products
 export const getProduct =

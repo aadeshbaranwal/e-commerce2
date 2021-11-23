@@ -37,6 +37,10 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
+import { token } from "../constants/constantsCustom";
+
+axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.headers.common['Authorization'] = token;
 
 // Login
 export const login = (email, password) => async (dispatch) => {
@@ -45,13 +49,14 @@ export const login = (email, password) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(
+    const { data }  = await axios.post(
       `/api/v1/login`,
       { email, password },
       config
     );
-
-    dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+    console.log(data.token)
+    localStorage.setItem("user", data.token)
+    dispatch({ type: LOGIN_SUCCESS, payload: data.token });
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
   }

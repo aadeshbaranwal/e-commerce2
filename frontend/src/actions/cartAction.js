@@ -4,9 +4,13 @@ import {
   SAVE_SHIPPING_INFO,
 } from "../constants/cartConstants";
 import axios from "axios";
+import { token } from "../constants/constantsCustom";
 
 // Add to Cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
+  axios.defaults.baseURL = 'http://localhost:3000';
+  axios.defaults.headers.common['Authorization'] = token;
+
   const { data } = await axios.get(`/api/v1/product/${id}`);
 
   dispatch({

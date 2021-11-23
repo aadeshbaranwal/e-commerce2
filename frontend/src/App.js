@@ -42,11 +42,14 @@ import ProductReviews from "./component/Admin/ProductReviews";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
+import { token } from "./constants/constantsCustom";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
+  axios.defaults.baseURL = 'http://localhost:3000';
+  axios.defaults.headers.common['Authorization'] = token;
 
   async function getStripeApiKey() {
     const { data } = await axios.get("/api/v1/stripeapikey");

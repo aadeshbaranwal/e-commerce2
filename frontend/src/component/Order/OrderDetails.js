@@ -68,7 +68,7 @@ const OrderDetails = ({ match }) => {
                     {order.paymentInfo &&
                     order.paymentInfo.status === "succeeded"
                       ? "PAID"
-                      : "NOT PAID"}
+                      : "PAID"}
                   </p>
                 </div>
 

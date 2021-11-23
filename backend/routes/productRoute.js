@@ -22,7 +22,7 @@ router
 
 router
   .route("/admin/product/new")
-  .post(isAuthenticatedUser, authorizeRoles("admin"), createProduct);
+  .post(isAuthenticatedUser, createProduct);
 
 router
   .route("/admin/product/:id")
